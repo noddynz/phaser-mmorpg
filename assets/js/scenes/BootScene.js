@@ -1,41 +1,53 @@
+/*jshint esversion: 6 */
 class BootScene extends Phaser.Scene {
-	constructor() {
-		super('Boot');
-	}
+  constructor() {
+    super('Boot');
+  }
 
-	preload() {
-		// load images
-		this.loadImages();
-		// load spritesheets
-		this.loadSpriteSheets();
-		// load audio
-		this.loadAudio();
-		// load tilemap
-		this.loadTileMap();
-	}
+  preload() {
+    // load images
+    this.loadImages();
+    // load spritesheets
+    this.loadSpriteSheets();
+    // load audio
+    this.loadAudio();
+    // load tilemap
+    this.loadTileMap();
+  }
 
-	loadImages() {
-		this.load.image('button1', 'assets/images/ui/blue_button01.png');
-		this.load.image('button2', 'assets/images/ui/blue_button02.png');
-		// load the map tileset image
-		this.load.image('background', 'assets/level/background-extruded.png');
-	}
+  loadImages() {
+    this.load.image('button1', 'assets/images/ui/blue_button01.png');
+    this.load.image('button2', 'assets/images/ui/blue_button02.png');
+    // load the map tileset image
+    this.load.image('background', 'assets/level/background-extruded.png');
+  }
 
-	loadSpriteSheets() {
-		this.load.spritesheet('items', 'assets/images/items.png', { frameWidth: 32, frameHeight: 32 });
-		this.load.spritesheet('characters', 'assets/images/characters.png', { frameWidth: 32, frameHeight: 32 });
-	}
+  loadSpriteSheets() {
+    this.load.spritesheet('items', 'assets/images/items.png', {
+      frameWidth: 32,
+      frameHeight: 32,
+    });
 
-	loadAudio() {
-		this.load.audio('goldSound', [ 'assets/audio/Pickup.wav' ]);
-	}
+    this.load.spritesheet('characters', 'assets/images/characters.png', {
+      frameWidth: 32,
+      frameHeight: 32,
+    });
+    this.load.spritesheet('monsters', 'assets/images/monsters.png', {
+      frameWidth: 32,
+      frameHeight: 32,
+    });
+  }
 
-	loadTileMap() {
-		// map made with Tiled in JSON format
-		this.load.tilemapTiledJSON('map', 'assets/level/large_level.json');
-	}
+  loadAudio() {
+    this.load.audio('goldSound', ['assets/audio/Pickup.wav']);
+  }
 
-	create() {
-		this.scene.start('Game');
-	}
+  loadTileMap() {
+    // map made with Tiled in JSON format
+    this.load.tilemapTiledJSON('map', 'assets/level/large_level.json');
+  }
+
+  create() {
+    this.scene.start('Game');
+  }
 }
