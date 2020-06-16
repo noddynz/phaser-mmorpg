@@ -61,6 +61,7 @@ class GameScene extends Phaser.Scene {
   createGroups() {
     // Create a chest group
     this.chests = this.physics.add.group();
+
     // Create a monster group
     this.monsters = this.physics.add.group();
     this.monsters.runChildUpdate = true;
@@ -102,6 +103,7 @@ class GameScene extends Phaser.Scene {
         monsterObject.health,
         monsterObject.maxHealth
       );
+
       // add monster to monsters group
       this.monsters.add(monster);
     } else {
@@ -198,8 +200,8 @@ class GameScene extends Phaser.Scene {
       });
     });
 
-    this.events.on('monsterMovement', (monster, health) => {
-      this.monsters.getChildren().forEach((monsters) => {
+    this.events.on('monsterMovement', (monsters) => {
+      this.monsters.getChildren().forEach((monster) => {
         Object.keys(monsters).forEach((monsterId) => {
           if (monster.id === monsterId) {
             this.physics.moveToObject(monster, monsters[monsterId], 40);

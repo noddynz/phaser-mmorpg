@@ -85,6 +85,7 @@ class Spawner {
       this.objectsCreated.forEach((monster) => {
         monster.move();
       });
+
       this.moveObjects();
     }, 1000);
   }
